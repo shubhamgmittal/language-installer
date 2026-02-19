@@ -1,20 +1,16 @@
 // script.js
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Only run this code on index.html (where language cards exist)
-    const languageCards = document.querySelectorAll('.language-item');
+    const path = window.location.pathname;
 
-    if (languageCards.length > 0) {
-        // We're on index.html
+    // --- Language selection: ONLY on index.html ---
+    if (path.includes('index.html')) {
+        const languageCards = document.querySelectorAll('.language-item');
+
         languageCards.forEach(card => {
             card.addEventListener('click', () => {
-                // Optional: Get the name of the clicked language
                 const languageName = card.querySelector('.language-name').textContent.trim();
-                
-                // You can store it in localStorage if you want to use it on main.html later
                 localStorage.setItem('selectedLanguage', languageName);
-
-                // Redirect to the operating system selection page
                 window.location.href = 'main.html';
             });
         });
