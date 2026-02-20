@@ -3,8 +3,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     const path = window.location.pathname;
 
-    // --- Language selection: ONLY on index.html ---
-    if (path.includes('index.html')) {
+    // --- Language selection: index page (root / or index.html) ---
+    const isIndexPage = path === '/' || path === '' || path.endsWith('index.html');
+    if (isIndexPage) {
         const languageCards = document.querySelectorAll('.language-item');
 
         languageCards.forEach(card => {
